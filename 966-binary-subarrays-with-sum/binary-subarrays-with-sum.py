@@ -1,24 +1,23 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        n = len(nums)
-        if sum(nums) == 0 and not goal:
-            return (n*(n+1)//2)
+        return SubarraysWithSum(nums, goal) - SubarraysWithSum(nums, goal - 1)
+        # n = len(nums)
+        # if sum(nums) == 0 and not goal:
+        #     return (n*(n+1)//2)
         
-        l, r, summa, c =  0, 0, 0, 0
+        # l, r, summa, c =  0, 0, 0, 0
 
-        while(r < n):
-            summa += nums[r]
+        # while(r < n):
+        #     summa += nums[r]
             
-            while(summa > goal):
-                summa -= nums[l]
-                l += 1
+        #     while(summa > goal):
+        #         summa -= nums[l]
+        #         l += 1
             
-            c += (r-l+1)
-            r += 1
-        
-        return c - self.SubarraysWithSum(nums, goal - 1)
+        #     c += (r-l+1)
+        #     r += 1
    
-    def SubarraysWithSum(self, nums: List[int], goal: int) -> int:
+def SubarraysWithSum(nums: List[int], goal: int) -> int:
         k = len(nums)
         if goal < 0 :
             return 0
