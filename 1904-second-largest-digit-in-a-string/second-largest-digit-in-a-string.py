@@ -16,18 +16,34 @@ class Solution:
 
         # Corrected :===> let's say 5 3 4 , then check if num > max_2 if true then put max_2 = num ---> hop till reach 4.
 
-        setv = set()
+        # setv = set()
+        # for n in s:
+        #     if n.isdigit():
+        #         setv.add(int(n))
+        
+        # for num in setv:
+        #     if num > max_1:
+        #         max_2 = max_1
+        #         max_1 = num
+        #     elif num > max_2:
+        #         max_2 = num
+
+        # return max_2
+
+
+        # Method :=====> 3
+
         for n in s:
             if n.isdigit():
-                setv.add(int(n))
+                k = int(n)
+                if k > max_1:
+                   max_2 = max_1
+                   max_1 = k
+                elif k > max_2 and k != max_1:
+                   max_2 = k
+            else:
+                pass
         
-        for num in setv:
-            if num > max_1:
-                max_2 = max_1
-                max_1 = num
-            elif num > max_2:
-                max_2 = num
-
         return max_2
 
         # Method :====> 2
