@@ -1,46 +1,66 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        # n = len(nums)
-        # l, r, ls = 0, n - 1, []
         
-        # if n == 0:
-        #     return [-1,-1]
+        n = len(nums)
 
-        # while(l <= r):
-        #     mid = (l + r) // 2
-        #     if nums[mid] == target:
-        #         if mid not in ls:
-        #             ls.append(mid)
-        #             l += 1
-        #         elif nums[l] == target:
-        #             ls.append(l)
-        #             l += 1
-        #         elif nums[r] == target:
-        #             ls.append(r)
-        #             r -= 1
-        #     elif nums[mid] < target :
-        #         l = mid + 1
-        #     else:
-        #         r = mid - 1
+        lb = lowbound(nums, n, target)
+        up = Upbound(nums, n, target)
+
+        if (lb == n or nums[lb] != target):
+            return [-1,-1] 
+        else:
+            return [lb,up-1]
+
+
+        ### Linear Search (Brute) ---> O(1)
+
+        # first, last = -1, -1
+
+        # for i in range(len(nums)):
+        #     if nums[i] == target:
+        #         if first == -1:
+        #             first = i
+        #         last = i
         
-        # m = len(ls)
+        # return [first,last]
+
+
+        ### Optimized (Lower & Upper Bounds ==> Binary Search ) ---> O(logN)
         
-        # # check for no target in nums
-        # if m == 0 :
-        #     return [-1,-1]
-        # else:
-        #     return [min(ls),max(ls)]
+
+
+def lowbound(arr, n, k):
+    low, high = 0, n - 1
+    ans = n
+
+    while(low <= high):
+        mid = (low+high) // 2
+         
+        ## Binary Search Logic
+        if arr[mid] >= k:
+            ans = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+    return ans
+
+def Upbound(arr, n, k):
+    low, high = 0, n - 1
+    ans = n
+
+    while(low <= high):
+        mid = (low+high) // 2
+         
+        ## Binary Search Logic
+        if arr[mid] > k:
+            ans = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+    return ans
+
 
         
-        ### Linear Search (Brute)
-
-        first, last = -1, -1
-
-        for i in range(len(nums)):
-            if nums[i] == target:
-                if first == -1:
-                    first = i
-                last = i
         
-        return [first,last]
+
         
