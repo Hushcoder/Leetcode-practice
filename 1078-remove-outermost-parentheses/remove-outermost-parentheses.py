@@ -16,3 +16,21 @@ class Solution:
                     res += ch
         
         return res
+
+
+        ### With Count
+        # count = 0
+        # res = ""
+        # for i in range(len(s)):
+        #     if s[i] == "(":
+        #         count += 1
+        #     if count != 0:
+        #         res += s[i]
+        #     if s[i] == ")":
+        #         count -= 1
+        
+        # return res
+        
+    #    2nd one Wrong Code 
+
+
