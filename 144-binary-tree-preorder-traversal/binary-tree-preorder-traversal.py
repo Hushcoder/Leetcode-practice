@@ -8,8 +8,7 @@ class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if root is None :
             return []
-        if root != None :
-           self.preorderTraversal(root.left)
-           self.preorderTraversal(root.right)
+        # if root != None :
+        #    self.preorderTraversal(root.left)
+        #    self.preorderTraversal(root.right)
         return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
-           
