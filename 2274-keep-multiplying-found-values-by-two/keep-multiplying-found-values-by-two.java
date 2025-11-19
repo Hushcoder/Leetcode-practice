@@ -8,10 +8,8 @@ class Solution {
             map.add(it);
         }
 
-        for(int i =0; i<n; i++){
-            if(map.contains(original)){
-                original = original*2;
-            }
+        while (map.contains(original)) {
+            original *= 2;
         }
         return original;
     }
