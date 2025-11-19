@@ -1,14 +1,15 @@
 class Solution {
     public int findFinalValue(int[] nums, int original) {
         int n = nums.length;
-        // int val = original;
-        HashMap<Integer , Integer> map = new HashMap<>();
+        
+        HashSet<Integer> map = new HashSet<>();
+
         for(int it : nums){
-            map.put(it , 1);
+            map.add(it);
         }
 
         for(int i =0; i<n; i++){
-            if(map.containsKey(original)){
+            if(map.contains(original)){
                 original = original*2;
             }
         }
